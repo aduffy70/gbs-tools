@@ -15,3 +15,23 @@ makerandom12mers.py - Generates a dummy fasta file of random 12bp sequences. Use
 collapsebarcodes.py - Removes a single nucleotide from the end of a set of 12mer (or
                       whatever-mer) sequences to see how the list of unique sequences 
                       collapses. Didn't end up being useful.
+
+"Pipeline" used to clean up T. intricatum GBS dataset:
+
+1) Make a list of unique 12mer starting sequences found in the fastq file.
+      findunique12mers.py
+2) Double check that the list is really unique 12mers.
+      doublecheckdups.py
+3) For each 12mer, determine which of our barcode-stickyends is the nearest match and the distance.
+      sortbarcodes.py
+4) Where the nearest match is unambiguous and the distance is <3, replace the starting 
+   8-12mer of each read in the fastq data with the corrected barcode-stickyend. Sort reads
+   with ambiguous matches or distance >=3 into files to be explored separately.
+      correctbarcodes.py
+5) Trim the barcode-stickyends from the reads and store the sticky end, sample name, and
+   barcode in the fastq description line. Trim the fastq quality line to match.
+      trimbarcodes.py
+6) Trim any Illumina primer sequence from the 3' end of the reads and trim the quality
+   line to match.
+     Used "cutadapt"
+
