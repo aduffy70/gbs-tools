@@ -12,3 +12,6 @@ findbarcode.py - Searches for a specific barcode anywhere within the reads of a 
 makerandom12mers.py - Generates a dummy fasta file of random 12bp sequences. Useful for
                       checking whether my pipeline is returning better results than are
                       expected just by chance in a large dataset.
+collapsebarcodes.py - Removes a single nucleotide from the end of a set of 12mer (or
+                      whatever-mer) sequences to see how the list of unique sequences 
+                      collapses. Didn't end up being useful.
