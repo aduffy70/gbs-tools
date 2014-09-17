@@ -68,6 +68,7 @@ with open(sys.argv[2]) as file: # open the 12mer file
                         best_match = "AMBIGUOUS"
                         ambiguous_list.append(barcode)
                 if best_match == "AMBIGUOUS" and best_distance < 3:
-                    print twelvemer, best_distance
+                    print twelvemer, best_distance,
                     for barcode in ambiguous_list:
-                        print barcode
+                        print barcode,
+                    print ""
