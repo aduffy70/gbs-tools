@@ -18,6 +18,11 @@ makerandom12mers.py - Generates a dummy fasta file of random 12bp sequences.
 collapsebarcodes.py - Removes a single nucleotide from the end of a set of 
                       12mer (or whatever-mer) sequences to see how the list 
                       of unique sequences collapses. Didn't end up being useful.
+countsbysample.py - Returns a count of how many reads in a fastq file were 
+                    assigned to each barcode.
+compare12merquality - Compares 12mers to the closest matching barcode and 
+                      reports the average quality of matching vs mismatched
+                      bases.
 
 "Pipeline" used to clean up T. intricatum GBS dataset:
 
