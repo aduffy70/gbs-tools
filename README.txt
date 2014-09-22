@@ -23,7 +23,7 @@ countsbysample.py - Returns a count of how many reads in a fastq file were
 compare12merquality.py - Compares 12mers to the closest matching barcode and 
                          reports the average quality of matching vs mismatched
                          bases.
-compare12merquality.py - Same, but for data with 14-16mers instead of 12mers.
+compare12merquality-zd.py - Same, but for data with 14-16mers instead of 12mers.
 categorizemismatch.py - Compares 12mers to the closest matching barcode and
                         categorizes the mismatches by type (A to C, C to G,
                         etc).
