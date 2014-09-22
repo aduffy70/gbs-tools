@@ -20,9 +20,12 @@ collapsebarcodes.py - Removes a single nucleotide from the end of a set of
                       of unique sequences collapses. Didn't end up being useful.
 countsbysample.py - Returns a count of how many reads in a fastq file were 
                     assigned to each barcode.
-compare12merquality - Compares 12mers to the closest matching barcode and 
-                      reports the average quality of matching vs mismatched
-                      bases.
+compare12merquality.py - Compares 12mers to the closest matching barcode and 
+                         reports the average quality of matching vs mismatched
+                         bases.
+categorizemismatch.py - Compares 12mers to the closest matching barcode and
+                        categorizes the mismatches by type (A to C, C to G,
+                        etc).
 
 "Pipeline" used to clean up T. intricatum GBS dataset:
 
