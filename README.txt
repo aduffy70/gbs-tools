@@ -27,6 +27,10 @@ compare12merquality-zd.py - Same, but for data with 14-16mers instead of 12mers.
 categorizemismatch.py - Compares 12mers to the closest matching barcode and
                         categorizes the mismatches by type (A to C, C to G,
                         etc).
+justthedata.py - Pulls out just the data line from a fastq file to make a    
+                 smaller, more manageable file for scripts that don't need the
+                 header or quality lines
+
 
 "Pipeline" used to clean up T. intricatum GBS dataset:
 
