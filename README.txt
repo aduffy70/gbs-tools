@@ -36,8 +36,10 @@ categorizemismatch.py - Compares 12mers to the closest matching barcode and
       doublecheckdups.py
 3) For each 12mer, determine which of our barcode-stickyends is the nearest 
    match and the distance.
-      sortbarcodes.py
-      (sortbarcodes-zd.py for data with 14-16mers)
+      sortbarcodes-wobble.py - for data with "wobble" bases in the cutsite 
+                               (R, W, etc.)
+      sortbarcodes-indels.py - if you don't have wobble bases and want to 
+                               allow for indels when calculating distances
 4) Where the nearest match is unambiguous and the distance is <3, replace the
    starting 8-12mer of each read in the fastq data with the corrected
    barcode-stickyend. Sort reads with ambiguous matches or distance >=3 into
