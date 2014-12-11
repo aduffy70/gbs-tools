@@ -7,6 +7,7 @@
 # For each mismatch type, Reports the number of times that 
 # substitution type was found in the unique 12mers file and
 # the number of reads containing that substitution.
+# This version works with any wobble bases in the cutsite.
 
 # Usage: categorizemismatch.py sortbarcodesOUTfile.txt findunique12mersOUT.txt 
 
@@ -22,6 +23,21 @@ unambiguous_12mer_count = 0
 comparison_count = 0
 mismatch_count = 0
 match_count = 0
+# Make a dictionary of IUB nucleotide codes so we can handle ANY wobble bases
+nucleotides = {"A": "A", "T": "T", "C": "C", "G": "G",
+               "R": "GA",
+               "K": "GT",
+               "S": "GC",
+               "W": "AT",
+               "M": "AC",
+               "Y": "TC",
+               "D": "GAT",
+               "V": "GAC",
+               "B": "GTC",
+               "H": "ATC",
+               "N": "GATC"}
+
+
 
 with open(sys.argv[2]) as file: # open the unique12mers file and make a dictionary to lookup reads per 12mer
     for line in file:
@@ -40,12 +56,8 @@ with open(sys.argv[1]) as file: # open the sortbarcodesOUT file
                 unambiguous_12mer_count += 1
                 for index in range(0,len(barcode)):
                     type = "match"
-                    if index == len(barcode) - 3: # special case for the W in the sticky end
-                        if twelvemer[index] != "T" and twelvemer[index] != "A": # mismatching base
-                            type = "W" + twelvemer[index]
-                    else:
-                        if twelvemer[index] != barcode[index]:
-                            type = barcode[index] + twelvemer[index]
+                    if twelvemer[index] not in nucleotides[barcode[index]]:
+                        type = barcode[index] + twelvemer[index]
                     if type != "match":
                         mismatch_count += 1
                         if mismatch_type_counts.has_key(type):
