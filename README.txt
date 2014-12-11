@@ -30,30 +30,31 @@ categorizemismatch.py - Compares 12mers to the closest matching barcode and
 justthedata.py - Pulls out just the data line from a fastq file to make a    
                  smaller, more manageable file for scripts that don't need the
                  header or quality lines
+doublecheckdups.py - Double check that a list of unique starting sequences is 
+                     really unique.
 
+"Pipeline" used to clean up T. intricatum GBS dataset (This process could
+ sped up drastically if some of these scripts were combined, but I left the
+ steps in separate scripts for flexibility):
 
-"Pipeline" used to clean up T. intricatum GBS dataset:
-
-1) Make a list of unique 12mer starting sequences found in the fastq file.
+1) Make a list of unique starting sequences (potential barcode-stickyends)
+   found in the fastq file. (It says 12mers, but the length is configurable.)
       findunique12mers.py
-2) Double check that the list is really unique 12mers.
-      doublecheckdups.py
-3) For each 12mer, determine which of our barcode-stickyends is the nearest 
-   match and the distance.
+2) For each unique starting sequence, determine which of our 
+   barcode-stickyends is the nearest match and the distance.
       sortbarcodes-wobble.py - for data with "wobble" bases in the cutsite 
                                (R, W, etc.)
       sortbarcodes-indels.py - if you don't have wobble bases and want to 
                                allow for indels when calculating distances
-4) Where the nearest match is unambiguous and the distance is <3, replace the
-   starting 8-12mer of each read in the fastq data with the corrected
-   barcode-stickyend. Sort reads with ambiguous matches or distance >=3 into
-   files to be explored separately.
+3) Where the nearest match is unambiguous and the distance is < a specified
+   value, replace the starting characters of each read in the fastq data 
+   with the corrected barcode-stickyend. Sort reads with ambiguous matches
+   or larger distances into files to be explored separately.
       correctbarcodes.py
-5) Trim the barcode-stickyends from the reads and store the sticky end, sample
+4) Trim the barcode-stickyends from the reads and store the sticky end, sample
    name, and barcode in the fastq description line. Trim the fastq quality 
    line to match.
       trimbarcodes.py
-6) Trim any Illumina primer sequence from the 3' end of the reads and trim the
+5) Trim any Illumina primer sequence from the 3' end of the reads and trim the
    quality line to match.
      Used "cutadapt"
-
