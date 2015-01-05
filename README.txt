@@ -32,6 +32,8 @@ justthedata.py - Pulls out just the data line from a fastq file to make a
                  header or quality lines
 doublecheckdups.py - Double check that a list of unique starting sequences is 
                      really unique.
+removeemptysequences.py - Returns just records with non-zero length sequences 
+                          from a fastq file.
 
 "Pipeline" used to clean up T. intricatum GBS dataset (This process could
  sped up drastically if some of these scripts were combined, but I left the
@@ -57,4 +59,8 @@ doublecheckdups.py - Double check that a list of unique starting sequences is
       trimbarcodes.py
 5) Trim any Illumina primer sequence from the 3' end of the reads and trim the
    quality line to match.
-     Used "cutadapt"
+      Used "cutadapt"
+6) Remove any 0-length sequences from the fastq file (with the right cutadapt
+   options this might not be necessary) because they cause problems for some 
+   of the fastx tools.
+      removeemptysequences.py
