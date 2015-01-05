@@ -6,7 +6,7 @@
 # Uses a fastq file with the barcodes already corrected (this script
 # expects EVERY read to start with one of our barcodes) and a 
 # barcode file with sample names.
-# Usage: trimbarcodes.py barcodefile.txt correctedfastqdata.fastq headerstartstring
+# Usage: trimbarcodes.py barcodefile.txt correctedfastqdata.fastq headerstartstring stickyendlength
 
 import sys
 
@@ -14,6 +14,7 @@ barcodes = {} # key = barcode and sticky end, value = sample name
 max_barcode_length = 0 # Just a number smaller than the smallest we expect
 min_barcode_length = 99 # Just a number bigger than the biggest we expect
 header_start = sys.argv[3]
+sticky_end_length = int(sys.argv[4])
 
 with open(sys.argv[1]) as file: # open the barcode file and make a dictionary and find the range of barcode lengths
     for line in file:
@@ -52,7 +53,8 @@ with open(sys.argv[2]) as file: # open the fastqdata file
             # remember the length so we can trim the quality score
             barcode_trim_length = barcode_length
             # We have everything we need to edit the header line now
-            header = header[:-1] + ":" + barcode[-4:] + ":" + barcodes[barcode] + ":" + barcode[0:-4] + header[-1]
+            sticky_end_index = sticky_end_length * -1
+            header = header[:-1] + ":" + barcode[sticky_end_index:] + ":" + barcodes[barcode] + ":" + barcode[0:sticky_end_index] + header[-1]
             fastq_line = 2
         elif fastq_line == 3: # This is the qualityline
             # cut the scores for the barcode and stickyend
