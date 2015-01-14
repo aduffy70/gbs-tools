@@ -36,7 +36,7 @@ with open(sys.argv[1]) as file:
 # end section
 
 # Use this section to include 12mers with Ns
-            if unique_starts.has_key(target):
+            if target in unique_starts:
                 unique_starts[target] += 1
             else:
                 unique_starts[target] = 1
