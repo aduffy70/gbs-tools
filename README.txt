@@ -34,6 +34,8 @@ doublecheckdups.py - Double check that a list of unique starting sequences is
                      really unique.
 removeemptysequences.py - Returns just records with non-zero length sequences 
                           from a fastq file.
+getbarcodecounts.py - Counts how many reads and bases are assigned to each
+                      barcode in a fastq file.
 
 "Pipeline" used to clean up T. intricatum GBS dataset (This process could
  sped up drastically if some of these scripts were combined, but I left the
@@ -64,3 +66,9 @@ removeemptysequences.py - Returns just records with non-zero length sequences
    options this might not be necessary) because they cause problems for some 
    of the fastx tools.
       removeemptysequences.py
+7) Get a baseline for sequence quality before quality trimming.
+      Used "fastx_quality_stats"
+8) Trim trailing low quality bases.
+      Used "fastq_quality_trimmer"
+9) Check quality after trimming and compare to baseline.
+      Used "fastx_quality_stats"
