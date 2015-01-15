@@ -46,8 +46,9 @@ fastq_file = HTSeq.FastqReader(sys.argv[1])
 for read in fastq_file:
     barcode = read.name.split(":")[-1] # The barcode is the last colon separated item on the fastq header line
     filename = barcodes[barcode] # Get the name of the file this record to which this record should be written
-    if filename != "NA": 
-        files[filename].write("@%s\n%s\n+\n%s\n" % (read.name, read.seq, read.qualstr)) # write the fastq record to the appropriate file
+    if filename != "NA":
+        read.write_to_fastq_file(files[filename]) 
+        #files[filename].write("@%s\n%s\n+\n%s\n" % (read.name, read.seq, read.qualstr)) # write the fastq record to the appropriate file
     read_counts[filename] += 1
 # Report the readcounts in each file
 for key in read_counts:
