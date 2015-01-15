@@ -36,6 +36,8 @@ removeemptysequences.py - Returns just records with non-zero length sequences
                           from a fastq file.
 getbarcodecounts.py - Counts how many reads and bases are assigned to each
                       barcode in a fastq file.
+splitfastq.py - Splits a fastq file into mutiple files based on a list of
+                barcodes and which file they belong in.
 
 "Pipeline" used to clean up T. intricatum GBS dataset (This process could
  sped up drastically if some of these scripts were combined, but I left the
@@ -72,3 +74,6 @@ getbarcodecounts.py - Counts how many reads and bases are assigned to each
       Used "fastq_quality_trimmer"
 9) Check quality after trimming and compare to baseline.
       Used "fastx_quality_stats"
+10) Split C. intricatum, T. boschiana, and D. petersii reads into three
+    separate files.
+      splitfastq.py
