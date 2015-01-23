@@ -77,3 +77,6 @@ splitfastq.py - Splits a fastq file into mutiple files based on a list of
 10) Split C. intricatum, T. boschiana, and D. petersii reads into three
     separate files.
       splitfastq.py
+11) Sort C.intricatum file by decreasing read length
+      Used "sort.pl"
+
