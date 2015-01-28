@@ -69,14 +69,20 @@ splitfastq.py - Splits a fastq file into mutiple files based on a list of
    of the fastx tools.
       removeemptysequences.py
 7) Get a baseline for sequence quality before quality trimming.
-      Used "fastx_quality_stats"
+      Used "fastx_quality_stats" from fastx tools
 8) Trim trailing low quality bases.
-      Used "fastq_quality_trimmer"
+      Used "fastq_quality_trimmer" from fastx tools
 9) Check quality after trimming and compare to baseline.
       Used "fastx_quality_stats"
 10) Split C. intricatum, T. boschiana, and D. petersii reads into three
     separate files.
       splitfastq.py
-11) Sort C.intricatum file by decreasing read length
+11) Convert C. intricatum fastq file to fasta
+      Used "fastq_to_fasta" from fastx tools
+12) Sort C.intricatum fasta file by decreasing read length
       Used "sort.pl"
-
+13) Move sample name & barcode to the start of the fasta descriptions so 
+    it doesn't get cut off in the cluster output from cd-hit-454.
+      movefastabarcode.py
+14) Cluster at decreasing stringency starting with 100% identity
+      Used "cd-hit-454"
