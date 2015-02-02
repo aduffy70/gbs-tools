@@ -38,6 +38,9 @@ getbarcodecounts.py - Counts how many reads and bases are assigned to each
                       barcode in a fastq file.
 splitfastq.py - Splits a fastq file into mutiple files based on a list of
                 barcodes and which file they belong in.
+renameclusters.py - Renames reads in cd-hit fasta output with the name of
+                    the cluster and the number of reads included in the 
+                    cluster (instead of the name of the seed sequence).
 
 "Pipeline" used to clean up T. intricatum GBS dataset (This process could
  sped up drastically if some of these scripts were combined, but I left the
