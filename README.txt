@@ -41,6 +41,9 @@ splitfastq.py - Splits a fastq file into mutiple files based on a list of
 renameclusters.py - Renames reads in cd-hit fasta output with the name of
                     the cluster and the number of reads included in the 
                     cluster (instead of the name of the seed sequence).
+plotclustercounts.py - Generates data for a cluster size histogram. Includes 
+                       counts of reads represented by each seed in a cluster
+                       of the output from renameclusters.py
 
 "Pipeline" used to clean up T. intricatum GBS dataset (This process could
  sped up drastically if some of these scripts were combined, but I left the
