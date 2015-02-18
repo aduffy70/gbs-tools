@@ -44,6 +44,10 @@ renameclusters.py - Renames reads in cd-hit fasta output with the name of
 plotclustercounts.py - Generates data for a cluster size histogram. Includes 
                        counts of reads represented by each seed in a cluster
                        of the output from renameclusters.py
+plotclusterreadproportions.py - Generates data for a scatter plot of the 
+                                proportion of reads in a cluster that have the 
+                                most common read vs either cluster read count
+                                or cluster unique read count.
 
 "Pipeline" used to clean up T. intricatum GBS dataset (This process could
  sped up drastically if some of these scripts were combined, but I left the
