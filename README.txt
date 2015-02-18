@@ -56,6 +56,7 @@ plotclusterreadproportions.py - Generates data for a scatter plot of the
 1) Make a list of unique starting sequences (potential barcode-stickyends)
    found in the fastq file. (It says 12mers, but the length is configurable.)
       findunique12mers.py
+      (or findunique12mersHTSeq.py)
 2) For each unique starting sequence, determine which of our 
    barcode-stickyends is the nearest match and the distance.
       sortbarcodes-wobble.py - for data with "wobble" bases in the cutsite 
