@@ -48,6 +48,8 @@ plotclusterreadproportions.py - Generates data for a scatter plot of the
                                 proportion of reads in a cluster that have the 
                                 most common read vs either cluster read count
                                 or cluster unique read count.
+makepseudogenome.py - Generates a pseudogenome (each cluster is a "chromosome") 
+                      to assemble reads against.
 
 "Pipeline" used to clean up T. intricatum GBS dataset (This process could
  sped up drastically if some of these scripts were combined, but I left the
