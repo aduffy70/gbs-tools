@@ -50,6 +50,8 @@ plotclusterreadproportions.py - Generates data for a scatter plot of the
                                 or cluster unique read count.
 makepseudogenome.py - Generates a pseudogenome (each cluster is a "chromosome") 
                       to assemble reads against.
+pairwise_coverage.py - Uses a genotypes table to generate a table showing what
+                       proportion of loci are shared between each two samples.
 
 "Pipeline" used to clean up T. intricatum GBS dataset (This process could
  sped up drastically if some of these scripts were combined, but I left the
